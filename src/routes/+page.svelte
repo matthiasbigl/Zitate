@@ -18,7 +18,7 @@
     class="flex flex-col justify-center items-center py-4 gap-2"
     >
         <h1
-                class="font-bold text-6xl text-white"
+                class="font-bold text-6xl text-white mb-4"
         >
             HTL Zitate
         </h1>
@@ -58,7 +58,7 @@
     >
         {#each zitate as zitat}
         <div
-                class="flex flex-col justify-center my-2 items-center bg-white rounded-md p-4 w-[80%] drop-shadow-lg"
+                class="flex flex-col justify-center my-2 items-center bg-white rounded-md p-4 w-full lg:w-[80%] drop-shadow-lg"
         >
             <p
                     class="text-xl font-bold"
