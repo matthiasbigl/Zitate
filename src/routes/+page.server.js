@@ -18,6 +18,15 @@ export const actions = {
         const quote = dataSvelte.get('quote');
         const person = dataSvelte.get('person');
 
+        if(!quote || !person){
+            return {
+                status: 400,
+                body: {
+                    error: "quote and person are required"
+                }
+            }
+        }
+
         console.log(quote);
 
         const { data, error } = await supabase
