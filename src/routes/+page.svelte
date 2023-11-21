@@ -31,12 +31,14 @@
             <input
                     type="text"
                     name="quote"
+                    required
                     placeholder="Zitat"
                     class="border-2 border-gray-300 rounded-md p-2"
             >
             <input
                     name="person"
                     type="text"
+                    required
                     placeholder="Autor"
                     class="border-2 border-gray-300 rounded-md p-2"
             >
