@@ -26,6 +26,32 @@ export const actions = {
                 }
             }
         }
+        if(String(quote).length > 500){
+            return {
+                status: 400,
+                body: {
+                    error: "quote is too long"
+                }
+            }
+        }
+        if(String(person).length > 100){
+            return {
+                status: 400,
+                body: {
+                    error: "person is too long"
+                }
+            }
+        }
+
+        //check if there are only spaces in the quote or person
+        if(String(quote).trim().length === 0 || String(person).trim().length === 0){
+            return {
+                status: 400,
+                body: {
+                    error: "quote and person are required"
+                }
+            }
+        }
 
         console.log(quote);
 
