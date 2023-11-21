@@ -26,7 +26,7 @@
         <form
 
                 method="POST"
-                class="flex flex-row justify-center items-center gap-4 drop-shadow-lg"
+                class="flex flex-col lg:flex-row justify-center items-center gap-4 drop-shadow-lg"
         >
             <input
                     type="text"
