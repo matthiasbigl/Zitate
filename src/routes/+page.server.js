@@ -3,6 +3,10 @@ import {supabase} from "$lib/supaBaseClient.js";
 export async function load() {
     const { data } = await supabase.from("zitate").select('*');
     console.log(data);
+
+
+    data?.reverse();
+
     return {
        zitate: data
     }

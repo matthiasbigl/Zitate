@@ -8,6 +8,7 @@
     export let form;
 
     const {zitate} = data;
+
 </script>
 
 
