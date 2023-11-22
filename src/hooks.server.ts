@@ -16,10 +16,10 @@ import {redirect} from "@sveltejs/kit";
 
 }
 
- interface AuthSession extends Session {
+ export interface AuthSession extends Session {
     id_token?: string;
     roles?: Roles[];
-    isThomas?: boolean;
+    isBannedFromPosting?: boolean;
 }
 
 
@@ -121,14 +121,22 @@ export const authOptions: SvelteKitAuthConfig = {
 
                 }
 
-                const isThomas=()=>{
-                    return String(session.user?.email).toLowerCase() === "thomas.baumeister@it.htlhl.at";
+                const bannedEmails = [
+                    "ban.baumeister@it.htlhl.at",
+                    "noah.mayerhuber@it.htlhl.at",
+                    "matthias.bigl@it.htlhl.at"
 
+                ];
+
+
+                const thomasHusoMove=()=>{
+                    return bannedEmails.includes(String(session.user?.email).toLowerCase());
                 }
+
                 session = Object.assign({}, session, {
                     id_token: token.idToken,
                     roles: roles(),
-                    isThomas: isThomas(),
+                    isBannedFromPosting: thomasHusoMove(),
                 });
             }
 

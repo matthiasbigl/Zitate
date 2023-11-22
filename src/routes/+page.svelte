@@ -52,7 +52,7 @@
         >
 
         <button
-                class={`bg-green-500 rounded-md p-2 ${!session ? "opacity-50 cursor-not-allowed bg-gray-500" : ""}`}
+                class={`bg-green-400 hover:bg-green-600 rounded-md p-2 ${!session ? "opacity-50 cursor-not-allowed bg-gray-500" : ""}`}
                 type="submit"
                 disabled={!session}
 
@@ -96,6 +96,7 @@
 <div
         class="flex flex-col justify-center items-center p-4"
 >
+
     {#each zitate as zitat}
         <div
                 class="flex flex-col justify-center my-2 items-center bg-white rounded-md p-4 w-full lg:w-[80%] drop-shadow-lg"

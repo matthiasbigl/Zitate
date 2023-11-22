@@ -1,15 +1,16 @@
 import {supabase} from "$lib/supaBaseClient.js";
 import {signIn} from "@auth/sveltekit/client";
 import {redirect} from "@sveltejs/kit";
+import type {PageServerLoad} from "./$types";
+import type {AuthSession} from "../hooks.server";
+import type { Actions } from './$types';
 
 
 
+export const load:PageServerLoad= async (event)=> {
 
-
-// @ts-ignore
-export async function load(event) {
-
-    const session = event.locals.session;
+    // @ts-ignore
+    const session = event.locals.getSession() as AuthSession
 
     const {data} = await supabase.from("zitate").select('*').order('created_at', {ascending: false})
     return {
@@ -18,8 +19,9 @@ export async function load(event) {
 }
 
 
-/** @type {import('./$types').Actions} */
+
 export const actions = {
+    // @ts-ignore
     default: async ({cookies, request, locals}) => {
 
         // @ts-ignore
@@ -31,11 +33,9 @@ export const actions = {
         }
 
         // @ts-ignore
-        if(session.isThomas){
-            throw redirect(301,"/thomas");
+        if(session.isBannedFromPosting){
+            throw redirect(301,"/ban");
         }
-
-
 
         const dataSvelte = await request.formData();
         const quote = dataSvelte.get('quote');
