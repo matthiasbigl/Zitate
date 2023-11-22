@@ -12,7 +12,7 @@ export const load:PageServerLoad= async (event)=> {
     // @ts-ignore
     const session = event.locals.getSession() as AuthSession
 
-    const {data} = await supabase.from("zitate").select('*').order('created_at', {ascending: false})
+    const {data} = await supabase.from("zitate").select('created_at,person,quote').order('created_at', {ascending: false})
     return {
         zitate: data
     }
