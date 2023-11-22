@@ -103,7 +103,7 @@
             <p
                     class="text-xl font-bold"
             >
-                {zitat.quote}
+                "{zitat.quote}"
             </p>
             <p
                     class="text-lg"
