@@ -122,7 +122,7 @@ export const authOptions: SvelteKitAuthConfig = {
                 }
 
                 const bannedEmails = [
-                    "ban.baumeister@it.htlhl.at",
+                    "thomas.baumeister@it.htlhl.at",
                     "noah.mayerhuber@it.htlhl.at",
                     "matthias.bigl@it.htlhl.at"
 
