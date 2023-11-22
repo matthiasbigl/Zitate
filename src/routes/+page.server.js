@@ -7,9 +7,9 @@ export async function load(event) {
 
     const session = event.locals.session;
 
-    const {data} = await supabase.from("zitate").select('*');
+    const {data} = await supabase.from("zitate").select('*').order('created_at', {ascending: false});
 
-    data?.reverse();
+
 
     return {
         zitate: data
