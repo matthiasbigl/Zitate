@@ -19,6 +19,7 @@ import {redirect} from "@sveltejs/kit";
  interface AuthSession extends Session {
     id_token?: string;
     roles?: Roles[];
+    isThomas?: boolean;
 }
 
 
@@ -102,6 +103,8 @@ export const authOptions: SvelteKitAuthConfig = {
             if (session) {
 
 
+
+
                 const roles = ()=>{
                     const base64Url = String(token.idToken).split('.')[1];
                     if (!base64Url){
@@ -118,9 +121,14 @@ export const authOptions: SvelteKitAuthConfig = {
 
                 }
 
+                const isThomas=()=>{
+                    return String(session.user?.email).toLowerCase() === "thomas.baumeister@it.htlhl.at";
+
+                }
                 session = Object.assign({}, session, {
                     id_token: token.idToken,
                     roles: roles(),
+                    isThomas: isThomas(),
                 });
             }
 

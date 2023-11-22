@@ -6,6 +6,7 @@ import type {Session} from "@auth/core/types";
 interface AuthSession extends Session {
     id_token?: string;
     roles?: Roles[];
+    isThomas?: boolean;
 }
 enum Roles{
     STUDENT="GradingBot.Student",

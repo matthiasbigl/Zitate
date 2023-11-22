@@ -2,15 +2,16 @@ import {supabase} from "$lib/supaBaseClient.js";
 import {signIn} from "@auth/sveltekit/client";
 import {redirect} from "@sveltejs/kit";
 
+
+
+
+
 // @ts-ignore
 export async function load(event) {
 
     const session = event.locals.session;
 
-    const {data} = await supabase.from("zitate").select('*').order('created_at', {ascending: false});
-
-
-
+    const {data} = await supabase.from("zitate").select('*').order('created_at', {ascending: false})
     return {
         zitate: data
     }
@@ -23,10 +24,15 @@ export const actions = {
 
         // @ts-ignore
 
-        const session =await locals.getSession()
+        const session =await locals.getSession();
 
         if (!session) {
-            return redirect(301,"/auth/login");
+            throw redirect(301,"/login");
+        }
+
+        // @ts-ignore
+        if(session.isThomas){
+            throw redirect(301,"/thomas");
         }
 
 
@@ -43,6 +49,7 @@ export const actions = {
                 }
             }
         }
+
         if (String(quote).length > 500) {
             return {
                 status: 400,
@@ -51,6 +58,7 @@ export const actions = {
                 }
             }
         }
+
         if (String(person).length > 100) {
             return {
                 status: 400,
